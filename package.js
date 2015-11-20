@@ -60,6 +60,6 @@ Package.onUse(function(api) {
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('react-form-handler-semantic-ui');
+  api.use('coniel:react-form-handler-semantic-ui');
   api.addFiles('react-form-handler-semantic-ui-tests.js');
 });
