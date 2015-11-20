@@ -1,0 +1,11 @@
+textarea.resize-none {
+    resize: none !important;
+}
+
+textarea.resize-vertical {
+    resize: vertical !important;
+}
+
+textarea.resize-horizontal {
+    resize: horizontal !important;
+}
