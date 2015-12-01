@@ -57,7 +57,7 @@ Select = React.createClass({
                     <div ref="select" className="ui selection dropdown">
                         <input type="hidden" name={this.props.name} />
                         <i className="angle down icon"></i>
-                        <div className="default text">{this.props.placeholder}</div>
+                        <div className={(this.props.defaultValue)? 'text' : 'text default'}>{(this.props.defaultValue)? this.props.defaultValue : this.props.placeholder}</div>
                         <div className="menu">
                             {options.map((item) => {
                                 return <div className="item" key={item.value} data-value={item.value}>{item.label}</div>
