@@ -35,7 +35,7 @@ Package.onUse(function(api) {
     'lib/components/RadioButton.jsx',
     // Submit buttons
     'lib/components/SubmitButton.jsx',
-    //'lib/components/FormActions.jsx'
+    'lib/components/FormActions.jsx'
   ]);
 
   api.addFiles([

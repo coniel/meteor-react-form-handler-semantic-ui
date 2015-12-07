@@ -4,10 +4,17 @@ FormActions = React.createClass({
         let cancelLabel = this.props.label || "actions.cancel";
         submitLabel = TAPi18n.__(submitLabel);
         cancelLabel = TAPi18n.__(cancelLabel);
-        let submitButton = (typeof this.props.submitAction !== 'undefined')? <RaisedButton onClick={this.props.submitAction} label={submitLabel} primary={true} /> : <RaisedButton label={submitLabel} type="submit" primary={true} />
+
+        let className = "ui button";
+
+        if (this.props.className) {
+            className += " " + this.props.className;
+        }
+
+        let submitButton = (typeof this.props.submitAction !== 'undefined')? <button {...this.props} className={className} onClick={this.props.submitAction}>{submitLabel}</button> : <button {...this.props} className={className} type="submit">{submitLabel}</button>
         return (
             <span style={{float: 'right', paddingTop: 15, paddingBottom: 15}}>
-                <FlatButton label={cancelLabel} style={{marginRight: 15}} onClick={this.props.cancelAction} />
+                <div {...this.props} className="ui button" style={{marginRight: 15}} onClick={this.props.cancelAction}>{cancelLabel}</div>
                 {submitButton}
             </span>
         )
