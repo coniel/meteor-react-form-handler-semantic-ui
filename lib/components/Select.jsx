@@ -5,12 +5,13 @@ Select = React.createClass({
         options: React.PropTypes.arrayOf(React.PropTypes.object),
         defaultValue: React.PropTypes.oneOfType([
             React.PropTypes.string,
-            React.PropTypes.number
+            React.PropTypes.number,
+            React.PropTypes.array
         ])
     },
     getInitialState() {
         return {
-            value: this.props.defaultValue,
+            defaultValue: this.props.defaultValue,
             error: this.props.error
         }
     },
@@ -22,6 +23,10 @@ Select = React.createClass({
         $(this.refs.select).dropdown({
             onChange: this._onChange
         });
+
+        if (this.props.multiple && this.state.defaultValue) {
+            $(this.refs.select).dropdown('set selected',this.state.defaultValue);
+        }
     },
     componentWillReceiveProps(nextProps) {
         this.setState({
@@ -29,6 +34,11 @@ Select = React.createClass({
         });
     },
     _onChange(value) {
+
+        if (this.props.multiple) {
+            var value = value.split(',');
+        }
+
         this.setState({
             value: value,
             error: false
@@ -50,14 +60,24 @@ Select = React.createClass({
             }
         }
 
+        let className = "ui selection dropdown";
+
+        if (this.props.multiple) {
+            className += " multiple";
+        }
+
+        if (this.props.search) {
+            className += " search selection";
+        }
+
         return (
             <div style={FormLayoutStyles[this.props.layoutStyle]}>
                 <div className={(this.state.error === true)? 'field error' : 'field'}>
                     <label>{this.props.label}</label>
-                    <div ref="select" className="ui selection dropdown">
+                    <div ref="select" className={className}>
                         <input type="hidden" name={this.props.name} />
                         <i className="angle down icon"></i>
-                        <div className={(this.props.defaultValue)? 'text' : 'text default'}>{(this.props.defaultValue)? this.props.defaultValue : this.props.placeholder}</div>
+                        <div className={(this.state.defaultValue)? 'text' : 'text default'}>{(this.state.defaultValue)? this.state.defaultValue : this.props.placeholder}</div>
                         <div className="menu">
                             {options.map((item) => {
                                 return <div className="item" key={item.value} data-value={item.value}>{item.label}</div>
