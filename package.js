@@ -1,6 +1,6 @@
 Package.describe({
   name: 'coniel:react-form-handler-semantic-ui',
-  version: '0.2.0',
+  version: '0.2.1',
   summary: "Semantic UI inputs for coniel:react-form-handler" ,
   git: 'https://github.com/coniel/meteor-react-form-handler-semantic-ui',
   documentation: 'README.md'
