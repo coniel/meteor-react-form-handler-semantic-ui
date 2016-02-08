@@ -16,7 +16,9 @@ Select = React.createClass({
         }
     },
     componentWillMount() {
-        FormHandler.initializeInput(this.props.formId, this.props.name, this.props.defaultValue);
+        if (this.props.formId) {
+            FormHandler.initializeInput(this.props.formId, this.props.name, this.props.defaultValue);
+        }
     },
     componentDidMount() {
         // Initialize the dropdown (Semantic UI)
@@ -74,7 +76,7 @@ Select = React.createClass({
             <div style={FormLayoutStyles[this.props.layoutStyle]}>
                 <div className={(this.state.error === true)? 'field error' : 'field'}>
                     <label>{this.props.label}</label>
-                    <div ref="select" className={className}>
+                    <div {...this.props} ref="select" className={className}>
                         <input type="hidden" name={this.props.name} />
                         <i className="angle down icon"></i>
                         <div className={(this.state.defaultValue)? 'text' : 'text default'}>{(this.state.defaultValue)? this.state.defaultValue : this.props.placeholder}</div>

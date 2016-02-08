@@ -22,15 +22,17 @@ Package.onUse(function(api) {
     'semantic:ui-dropdown@2.1.6',
     'semantic:ui-checkbox@2.1.5',
     'semantic:ui-icon@2.1.4',
-    'sarasate:semantic-ui-datetimepicker@0.0.2'
-  ]);2
+    'sarasate:semantic-ui-datetimepicker@0.0.2',
+    'copleykj:jquery-autosize@1.17.8'
+  ]);
 
   api.addFiles([
     'lib/components/TextInput.jsx',
     'lib/components/TextArea.jsx',
-    //'lib/components/DatePicker.jsx',
+    'lib/components/DatePicker.jsx',
     'lib/components/Select.jsx',
     'lib/components/Checkbox.jsx',
+    'lib/components/Toggle.jsx',
     'lib/components/RadioButtonGroup.jsx',
     'lib/components/RadioButton.jsx',
     // Submit buttons
@@ -49,6 +51,7 @@ Package.onUse(function(api) {
     'DatePicker',
     'Select',
     'Checkbox',
+    'Toggle',
     'RadioButtonGroup',
     'RadioButton',
     'SubmitButton',

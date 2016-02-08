@@ -13,26 +13,25 @@ DatePicker = React.createClass({
         FormHandler.initializeInput(this.props.formId, this.props.name, this.props.defaultValue);
     },
     componentDidMount() {
+        var formId = this.props.formId;
+        var name = this.props.name;
         // Initialize the datepicker
         $(this.refs.datepicker).datetimepicker();
+        $(this.refs.datepicker).on("dp.change", function (e) {
+            FormHandler.inputChanged(formId, name, e.date.toDate());
+        });
     },
     componentWillReceiveProps(nextProps) {
         this.setState({
             value: nextProps.value
         });
     },
-    _onChange(event, date) {
-        FormHandler.inputChanged(this.props.formId, this.props.name, date);
-        this.setState({
-            value: date
-        });
-    },
     render: function () {
         return (
             <div style={FormLayoutStyles[this.props.layoutStyle]}>
-                <div className="field">
+                <div className="field" style={{position: 'relative'}}>
                     <label>{this.props.label}</label>
-                    <input ref="datepicker" {...this.props} type="text" className="ui dropdown datetimepicker" />
+                    <input ref="datepicker" {...this.props} type="text" className="ui dropdown datepicker" onChange={this._onChange} />
                 </div>
             </div>
         )

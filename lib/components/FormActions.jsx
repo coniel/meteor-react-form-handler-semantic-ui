@@ -11,10 +11,16 @@ FormActions = React.createClass({
             className += " " + this.props.className;
         }
 
+        let containerStyle = {float: 'right', paddingTop: 15, paddingBottom: 15};
+
+        if (this.props.style) {
+            _.extend(containerStyle, this.props.style);
+        }
+
         let submitButton = (typeof this.props.submitAction !== 'undefined')? <button {...this.props} className={className} onClick={this.props.submitAction}>{submitLabel}</button> : <button {...this.props} className={className} type="submit">{submitLabel}</button>
         return (
-            <span style={{float: 'right', paddingTop: 15, paddingBottom: 15}}>
-                <div {...this.props} className="ui button" style={{marginRight: 15}} onClick={this.props.cancelAction}>{cancelLabel}</div>
+            <span style={containerStyle}>
+                <div className="ui button" style={{marginRight: 15}} onClick={this.props.cancelAction}>{cancelLabel}</div>
                 {submitButton}
             </span>
         )
