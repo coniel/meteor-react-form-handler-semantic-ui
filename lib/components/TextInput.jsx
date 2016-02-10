@@ -28,6 +28,10 @@ TextInput = React.createClass({
 
         let value = event.nativeEvent.target.value;
         FormHandler.inputChanged(this.props.formId, this.props.name, value);
+
+        if (this.props.onChange) {
+            this.props.onChange(value);
+        }
     },
     render: function() {
 
