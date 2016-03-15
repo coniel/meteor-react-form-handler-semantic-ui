@@ -11,7 +11,7 @@ Package.onUse(function(api) {
 
   api.use([
     'ecmascript',
-    'react@0.14.1_1',
+    'react@0.14.3',
     'coniel:react-form-handler@0.2.1',
     'semantic:ui-reset@2.1.6',
     'semantic:ui-transition@2.1.6',
