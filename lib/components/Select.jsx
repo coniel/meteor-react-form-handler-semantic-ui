@@ -41,6 +41,10 @@ Select = React.createClass({
             var value = value.split(',');
         }
 
+        if (this.props.schema && this.props.schema.type === Number) {
+            value = parseInt(value);
+        }
+
         this.setState({
             value: value,
             error: false
